@@ -1,0 +1,71 @@
+<footer id="footer" class="footer style-01">
+  <div class="section-001 section-009">
+      <div class="container">
+          <div class="kaycee-newsletter style-01">
+              <div class="newsletter-inner">
+                  <div class="newsletter-info">
+                      <div class="newsletter-wrap">
+                          <h3 class="title">Newsletter<span></span></h3>
+                          <h4 class="subtitle">Get Discount 30% Off</h4>
+                          <p class="desc">Receive exclusive updates, news, and offers—subscribe now for more!</p>
+                      </div>
+                  </div>
+                  <div class="newsletter-form-wrap">
+                      <div class="newsletter-form-inner">
+                        <form action="/api/add-to-newsletter" method="post" enctype="application/x-www-form-urlencoded">
+                          <input class="email email-newsletter" name="email" placeholder="Enter your email ..."
+                                 type="email">
+                          <button type="submit" href="#" class="button btn-submit submit-newsletter">
+                              <span class="text">Subscribe</span>
+                          </button>
+                        </form>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="section-010">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-4">
+                  <p style="white-space: nowrap;">© Copyright <span id="footer-year"></span> <a href="/">MyssticbyArzoo</a>. All Rights Reserved.</p>
+              </div>
+              <div class="col-md-4" style="text-align: center;">
+                <p>Developed By <a href="#">Amardeep Singh</a></p>
+            </div>
+            <div class="col-md-4" style="text-align: center;">
+                <p> <a href="/assets/Terms.pdf">Privacy Policy</a></p>
+            </div>
+          </div>
+      </div>
+  </div>
+</footer>
+<div class="footer-device-mobile">
+  <div class="wapper">
+      <div class="footer-device-mobile-item device-home">
+          <a href="/">
+        <span class="icon">
+          <span class="fa fa-home"></span>
+        </span>
+              Home
+          </a>
+      </div>
+      
+      <div class="footer-device-mobile-item device-home device-cart">
+          <a href="/cart">
+        <span class="icon">
+          <span class="flaticon-shopping-bag-1"></span>
+          <span class="count-icon">
+            0
+          </span>
+        </span>
+              <span class="text">Cart</span>
+          </a>
+      </div>
+      
+  </div>
+</div>
+<script>
+    document.getElementById('footer-year').innerText = new Date().getFullYear();
+  </script>

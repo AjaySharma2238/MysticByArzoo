@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<head>
+    <!--  Title -->
+    <title>Login</title>
+    <!--  Required Meta Tag -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="handheldfriendly" content="true" />
+    <meta name="MobileOptimized" content="width" />
+    <meta name="description" content="Mordenize" />
+    <meta name="author" content="" />
+    <meta name="keywords" content="Mordenize" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!--  Favicon -->
+    <link rel="shortcut icon" type="image/png" href="/assets/dashboard/dist/images/logos/favicon.png" />
+    <!-- Core Css -->
+    <link  id="themeColors"  rel="stylesheet" href="/assets/dashboard/dist/css/style.min.css" />
+    <style>
+      .hidden{
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Preloader -->
+    <div class="preloader">
+      <img src="/assets/dashboard/dist/images/logos/favicon.png" alt="loader" class="lds-ripple img-fluid" />
+    </div>
+    <!-- Preloader -->
+    <div class="preloader">
+      <img src="/assets/dashboard/dist/images/logos/favicon.png" alt="loader" class="lds-ripple img-fluid" />
+    </div>
+    <!--  Body Wrapper -->
+    <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed">
+      <div class="position-relative overflow-hidden radial-gradient min-vh-100">
+        <div class="position-relative z-index-5">
+          <div class="row">
+            <div class="col-xl-7 col-xxl-8">
+              <a href="/" class="text-nowrap logo-img d-block px-4 py-9 w-100">
+                <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/logos/dark-logo.svg" width="180" alt="">
+              </a>
+              <div class="d-none d-xl-flex align-items-center justify-content-center" style="height: calc(100vh - 80px);">
+                <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/backgrounds/login-security.svg" alt="" class="img-fluid" width="500">
+              </div>
+            </div>
+            <div class="col-xl-5 col-xxl-4">
+              <div class="authentication-login min-vh-100 bg-body row justify-content-center align-items-center p-4">
+                <div class="col-sm-8 col-md-6 col-xl-9">
+                  <h2 class="mb-3 fs-7 fw-bolder">Welcome to Modernize</h2>
+                  <p class=" mb-9">Your Admin Dashboard</p>
+                  
+                  
+                  <form id="login-form">
+                    <div class="alert alert-danger alert-dismissible bg-danger text-white border-0 fade show hidden" role="alert">
+                      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+                      <strong>Incorrect - </strong> Email/Password
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">Email</label>
+                      <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-4">
+                      <label for="exampleInputPassword1" class="form-label">Password</label>
+                      <input name="password" type="password" class="form-control" id="exampleInputPassword1">
+                    </div>
+                    
+                    <button type="submit"  class="btn btn-primary w-100 py-8 mb-4 rounded-2">Sign In</Button>
+                   
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+    <!--  Import Js Files -->
+    <script src="/assets/dashboard/dist/libs/jquery/dist/jquery.min.js"></script>
+    <script src="/assets/dashboard/dist/libs/simplebar/dist/simplebar.min.js"></script>
+    <script src="/assets/dashboard/dist/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <!--  core files -->
+    <script src="/assets/dashboard/dist/js/app.min.js"></script>
+    <script src="/assets/dashboard/dist/js/app.init.js"></script>
+    <script src="/assets/dashboard/dist/js/app-style-switcher.js"></script>
+    <script src="/assets/dashboard/dist/js/sidebarmenu.js"></script>
+    
+    <script src="/assets/dashboard/dist/js/custom.js"></script>
+    <script>
+      $(document).ready(function () {
+          $("#login-form").submit(function (event) {
+              event.preventDefault(); // Prevent the default form submission
+
+              // Serialize the form data
+              var formData = $(this).serialize();
+
+              $.ajax({
+                  type: "POST",
+                  url: "/api/login",
+                  data: formData,
+                  success: function (response) {
+                    console.log(response)
+                      // Check if the response is a success
+                      if (response.status == 200) {
+                          // Redirect to the dashboard on success
+                          window.location.href = "/dashboard";
+                      } else {
+                          // Show the error message for 3 seconds
+                          $(".alert-danger").removeClass("hidden");
+                          setTimeout(function () {
+                              $(".alert-danger").addClass("hidden");
+                          }, 3000);
+                      }
+                  },
+                  error: function () {
+                      // Handle any AJAX errors here
+                      console.error("Error occurred during login.");
+                  }
+              });
+          });
+      });
+  </script>
+  </body>
+
+</html>
